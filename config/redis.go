@@ -2,8 +2,9 @@ package config
 
 import (
 	"context"
-	"github.com/go-redis/redis/v8"
 	"log"
+
+	"github.com/go-redis/redis/v8"
 )
 
 var RedisClient *redis.Client
@@ -11,8 +12,8 @@ var ctx = context.Background()
 
 func ConnectRedis() {
 	RedisClient = redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379", // Redis default port
-		Password: "",               // No password
+		Addr:     "localhost:6379", // default port
+		Password: "",               
 		DB:       0,                // Default DB
 	})
 

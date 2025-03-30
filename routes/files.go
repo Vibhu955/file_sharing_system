@@ -11,13 +11,12 @@ import (
 func FileRoutes(r *gin.Engine) {
 	auth := r.Group("/") // Create a group for authenticated routes
 
-	auth.Use(middlewares.AuthMiddleware())    // Apply auth middleware
-	auth.POST("/upload", handlers.UploadFile) // Protect this route
-	auth.GET("/files", handlers.GetFiles)     //  Protect this route
-	auth.GET("/share/:id", handlers.ShareFile)
-	auth.GET("/download/:id", handlers.DownloadFile) // Protect this route
-
-	// r.GET("/files", handlers.GetFiles)          // Retrieve user files
-	// r.GET("/share/:file_id", handlers.ShareFile) // Generate shareable link
-	// r.GET("/download/:file_id", handlers.DownloadFile) // Secure file download
+	auth.Use(middlewares.AuthMiddleware())   
+	auth.POST("/upload", handlers.UploadFile) // upload only when logged in 
+	auth.GET("/files", handlers.GetFiles)     //  get files of logged in user
+	auth.GET("/share/:id", handlers.ShareFile) // files shared by logged in user
+	auth.GET("/download/:id", handlers.DownloadFile) // logged in user can download files
+	auth.GET("/search", handlers.SearchFiles) // logged in user can search files
+	// create delete file route similarly
+	// auth.DELETE("/delete/:id", handlers.DeleteFile) // logged in user can delete its own files
 }

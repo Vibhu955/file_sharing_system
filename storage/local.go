@@ -6,10 +6,10 @@ import (
 	"path/filepath"
 )
 
-// SaveLocally saves a file to local storage
+// saves file to local storage
 func SaveLocally(file io.Reader, fileName string) (string, error) {
 	savePath := "uploads/"
-	os.MkdirAll(savePath, os.ModePerm) // Ensure directory exists
+	os.MkdirAll(savePath, os.ModePerm) 
 
 	filePath := filepath.Join(savePath, fileName)
 	outFile, err := os.Create(filePath)

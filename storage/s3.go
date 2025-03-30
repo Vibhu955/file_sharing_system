@@ -11,7 +11,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 )
 
-// UploadToS3 uploads a file to Amazon S3
+// Uploading file to Amazon S3
 func UploadToS3(file io.Reader, fileName string) (string, error) {
 	sess, err := session.NewSession(&aws.Config{
 		Region: aws.String("us-east-1"),

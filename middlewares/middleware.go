@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Secret key for JWT validation
+// JWT Secret key 
 var jwtSecret = []byte("your_secret_key")
 
 // Claims structure
@@ -16,8 +16,7 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-
-// Middleware to authenticate requests
+// Middleware 
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		tokenString := c.GetHeader("Authorization")
@@ -26,7 +25,7 @@ func AuthMiddleware() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-
+		
 		claims := &Claims{}
 		token, err := jwt.ParseWithClaims(tokenString, claims, func(token *jwt.Token) (interface{}, error) {
 			return jwtSecret, nil

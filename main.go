@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"file-sharing/config"
-	"file-sharing/routes"
 	"file-sharing/middlewares"
+	"file-sharing/routes"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -32,7 +32,7 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
-// Register endpoint
+// create user
 func register(c *gin.Context) {
 	var user User
 	if err := c.ShouldBindJSON(&user); err != nil {
@@ -58,7 +58,7 @@ func register(c *gin.Context) {
 	c.JSON(http.StatusCreated, gin.H{"message": "User registered successfully"})
 }
 
-// Login endpoint
+// Login user
 func login(c *gin.Context) {
 	var user User
 	if err := c.ShouldBindJSON(&user); err != nil {
@@ -100,15 +100,13 @@ func login(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not store token"})
 		return
 	}
-
 	c.JSON(http.StatusOK, gin.H{"token": tokenString})
 }
 
-
-
 func main() {
-	config.ConnectDB()    // Initialize PostgreSQL connection
-	config.ConnectRedis() // Redis
+	config.ConnectDB()    // PostgreSQL connection
+	config.ConnectRedis() // Redis connection
+	// config.ConnectS3()   // S3 connection
 	db = config.DB
 
 	log.Println("Database connected successfully")
