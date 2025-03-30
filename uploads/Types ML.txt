@@ -1,0 +1,18 @@
+1. Supervised - regression(0/1) and classification(yes/no)
+2. Unsupervised - clustering(grouping data) and association(trends in ppl)
+
+Algorithms
+1. Logistics regression
+2. Support vector machine
+(
+Naïve Bayes Classifier Algorithm
+*****K Means Clustering Algorithm
+-----Support Vector Machine Algorithm
+Apriori Algorithm
+*****Linear Regression Algorithm
+-----Logistic Regression Algorithm
+Decision Trees Algorithm
+*****Random Forests Algorithm
+K Nearest Neighbours Algorithm
+*****Artificial Neural Networks Algorithm (DL)
+)
